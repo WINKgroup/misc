@@ -1,0 +1,22 @@
+{
+  "name": "misc-wink",
+  "version": "1.5.0",
+  "description": "Utility library used in WiNK for miscellaneous tasks",
+  "main": "Misc.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WINKgroup/misc-wink.git"
+  },
+  "author": "WiNK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WINKgroup/misc-wink/issues"
+  },
+  "homepage": "https://github.com/WINKgroup/misc-wink#readme",
+  "devDependencies": {
+    "url": "^0.11.0"
+  }
+}
