@@ -1,14 +1,16 @@
 {
-  "name": "@winkgroup/misc-wink",
-  "version": "1.5.0",
+  "name": "@winkgroup/misc",
+  "version": "1.5.3",
   "description": "Utility library used in WiNK for miscellaneous tasks",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "files": ["build/**/*"],
+  "files": [
+    "build/**/*"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean":"del ./build/*",
-    "build":"npm run clean && tsc"
+    "clean": "del ./build/*",
+    "build": "npm run clean && tsc"
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,8 @@
     "url": "https://github.com/WINKgroup/misc-wink/issues"
   },
   "homepage": "https://github.com/WINKgroup/misc-wink#readme",
-  "dependencies": {
-    "del-cli": "^5.0.0",
-    "typescript": "^4.7.4"
-  },
   "devDependencies": {
-    "@types/node": "^18.0.6"
+    "@types/node": "^18.0.6",
+    "typescript": "^4.7.4"
   }
 }
