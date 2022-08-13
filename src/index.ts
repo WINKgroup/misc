@@ -1,8 +1,3 @@
-/***
- * @version 1.5
- */
-import { URL } from "url"
-
 export function timeFromNow(ISO:string) {
     const now = (new Date()).getTime()
     const past = (new Date(ISO)).getTime()
@@ -42,11 +37,6 @@ export function byteString (fileSize:number):string {
     }
 }
 
-export function isHtml(text:string) {
-    const countSpecialChars = Array.from(text).filter( (c:string) => '<>'.indexOf(c) !== -1 ).length
-    return countSpecialChars / text.length > 0.02
-}
-
 export function randomId() {
     return Math.random().toString(36).substring(7)
 }
@@ -63,4 +53,12 @@ export function collapse(text:string, limit = 150) {
     var start = text.substring(0, 70)
     var end = text.substring(text.length - 70)
     return start + ' ... ' + end
+}
+
+export function pickRandom(list:string[]) {
+    if (list.length === 0) return null
+    if (list.length === 1) return list[0]
+    var num = Math.round(Math.random() * list.length)
+    if (num === list.length) num = list.length - 1
+    return list[num]
 }
