@@ -62,3 +62,10 @@ export function pickRandom(list:string[]) {
     if (num === list.length) num = list.length - 1
     return list[num]
 }
+
+// dontTryThisAtHome => Dont Try This At Home
+export function camelToTitle(camelCase:string) {
+    const result = camelCase.replace(/([A-Z])/g, " $1")
+    const finalResult = result.charAt(0).toUpperCase() + result.slice(1)
+    return finalResult
+}

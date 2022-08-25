@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pickRandom = exports.collapse = exports.padZeros = exports.randomId = exports.byteString = exports.shrinkUrl = exports.timeFromNow = void 0;
+exports.camelToTitle = exports.pickRandom = exports.collapse = exports.padZeros = exports.randomId = exports.byteString = exports.shrinkUrl = exports.timeFromNow = void 0;
 function timeFromNow(ISO) {
     var now = (new Date()).getTime();
     var past = (new Date(ISO)).getTime();
@@ -82,3 +82,10 @@ function pickRandom(list) {
     return list[num];
 }
 exports.pickRandom = pickRandom;
+// dontTryThisAtHome => Dont Try This At Home
+function camelToTitle(camelCase) {
+    var result = camelCase.replace(/([A-Z])/g, " $1");
+    var finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+    return finalResult;
+}
+exports.camelToTitle = camelToTitle;
