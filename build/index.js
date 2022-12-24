@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.camelToTitle = exports.pickRandom = exports.collapse = exports.padZeros = exports.randomId = exports.byteString = exports.shrinkUrl = exports.timeFromNow = void 0;
+exports.camelToTitle = exports.pickRandom = exports.collapse = exports.padZeros = exports.byteString = exports.shrinkUrl = exports.timeFromNow = void 0;
 function timeFromNow(ISO) {
     var now = (new Date()).getTime();
     var past = (new Date(ISO)).getTime();
@@ -50,10 +50,6 @@ function byteString(fileSize) {
     }
 }
 exports.byteString = byteString;
-function randomId() {
-    return Math.random().toString(36).substring(7);
-}
-exports.randomId = randomId;
 function padZeros(value, dim) {
     var result = (typeof value !== 'string' ? value.toString() : value);
     dim -= result.length;

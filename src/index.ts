@@ -37,10 +37,6 @@ export function byteString (fileSize:number):string {
     }
 }
 
-export function randomId() {
-    return Math.random().toString(36).substring(7)
-}
-
 export function padZeros(value:number | string, dim:number) {
     let result = (typeof value !== 'string' ? value.toString(): value)
     dim -= result.length
