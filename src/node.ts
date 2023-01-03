@@ -13,3 +13,15 @@ export function question(question:string) {
         })
     } )
 }
+
+export async function getKeypress() {
+    return new Promise(resolve => {
+        process.stdin.setRawMode(true)
+        process.stdin.resume()
+        process.stdin.once('data', onData)
+        function onData(buffer: any) {
+            process.stdin.setRawMode(false)
+            resolve(buffer.toString())
+        }
+    })
+}
