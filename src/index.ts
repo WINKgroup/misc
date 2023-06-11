@@ -62,6 +62,18 @@ export function camelToTitle(camelCase: string) {
     return finalResult;
 }
 
+export function getDuration(seconds: number) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds - hours * 3600) / 60);
+    const secs = seconds % 60;
+    const pointSep = secs.toString().split('.');
+
+    return `${padZeros(hours, 2)}:${padZeros(minutes, 2)}:${
+        padZeros(Math.floor(secs), 2) +
+        (pointSep.length > 1 ? '.' + pointSep[1] : '')
+    }`;
+}
+
 // distance between strings
 export function levenshtein(s: string, t: string) {
     if (s === t) {
