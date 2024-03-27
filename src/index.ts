@@ -184,7 +184,7 @@ export function levenshtein(s: string, t: string) {
  * 2    => i1 is to the right of i2, with overlap
  * 3    => i1 is to the right of i2, no overlap
  */
-function intervalRelativePosition(
+export function intervalRelativePosition(
     start1: number,
     end1: number,
     start2: number,
