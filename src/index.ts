@@ -184,22 +184,27 @@ export function levenshtein(s: string, t: string) {
  * 2    => i1 is to the right of i2, with overlap
  * 3    => i1 is to the right of i2, no overlap
  */
-function intervalRelativePosition(start1:number, end1:number, start2: number, end2: number) {
+function intervalRelativePosition(
+    start1: number,
+    end1: number,
+    start2: number,
+    end2: number,
+) {
     if (start1 > end1) {
-        const temp = start1
-        start1 = end1
-        end1 = temp
+        const temp = start1;
+        start1 = end1;
+        end1 = temp;
     }
     if (start2 > end2) {
-        const temp = start2
-        start2 = end2
-        end2 = temp
+        const temp = start2;
+        start2 = end2;
+        end2 = temp;
     }
-    if (end1 < start2) return -3
-    if (start1 > end2) return 3
-    if (start1 > start2 && end1 < end2) return -1
-    if (start1 < start2 && end1 > end2) return 1
-    if (start1 < start2) return -2
-    if (end1 > end2) return 2
-    return 0
+    if (end1 < start2) return -3;
+    if (start1 > end2) return 3;
+    if (start1 > start2 && end1 < end2) return -1;
+    if (start1 < start2 && end1 > end2) return 1;
+    if (start1 < start2) return -2;
+    if (end1 > end2) return 2;
+    return 0;
 }
