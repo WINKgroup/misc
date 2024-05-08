@@ -74,6 +74,15 @@ export function getDuration(seconds: number) {
     }`;
 }
 
+export function getErrorStrOnException(e: unknown) {
+    let error: string;
+
+    if (e instanceof Error) error = e.message;
+    else if (typeof e === 'string') error = e;
+    else error = JSON.stringify(e);
+    return error;
+}
+
 // distance between strings
 export function levenshtein(s: string, t: string) {
     if (s === t) {
