@@ -217,3 +217,23 @@ export function intervalRelativePosition(
     if (end1 > end2) return 2;
     return 0;
 }
+
+export function permute<T>(inputArray: T[]): T[][] {
+    const result: T[][] = [];
+
+    function permuteHelper(arr: T[], m: T[] = []) {
+        if (arr.length === 0) {
+            result.push(m);
+        } else {
+            for (let i = 0; i < arr.length; i++) {
+                let curr = arr.slice();
+                let next = curr.splice(i, 1);
+                permuteHelper(curr.slice(), m.concat(next));
+            }
+        }
+    }
+
+    permuteHelper(inputArray);
+
+    return result;
+}
