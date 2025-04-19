@@ -237,3 +237,59 @@ export function permute<T>(inputArray: T[]): T[][] {
 
     return result;
 }
+
+export function objectRegExpToString(obj: any): string {
+    if (obj === null || obj === undefined) {
+        return JSON.stringify(obj);
+    }
+
+    if (obj instanceof RegExp) {
+        return obj.toString();
+    }
+
+    if (typeof obj === 'object') {
+        const newObj: any = Array.isArray(obj) ? [] : {};
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                newObj[key] = objectRegExpToString(obj[key]);
+            }
+        }
+        return JSON.stringify(newObj);
+    }
+
+    return JSON.stringify(obj);
+}
+
+export function stringToObjectRegExp(str: string): any {
+    const parsedObj = JSON.parse(str);
+
+    function convertRegex(obj: any): any {
+        if (obj === null || obj === undefined) return obj;
+
+        if (typeof obj === 'string') {
+            const regexPattern = /^\/(.+)\/([gimsuy]*)$/;
+            const match = obj.match(regexPattern);
+            if (match) {
+                return new RegExp(match[1], match[2]);
+            }
+        }
+
+        if (typeof obj === 'object') {
+            if (Array.isArray(obj)) {
+                return obj.map(convertRegex);
+            } else {
+                const newObj: any = {};
+                for (const key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        newObj[key] = convertRegex(obj[key]);
+                    }
+                }
+                return newObj;
+            }
+        }
+
+        return obj;
+    }
+
+    return convertRegex(parsedObj);
+}
