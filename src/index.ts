@@ -74,12 +74,15 @@ export function getDuration(seconds: number) {
     }`;
 }
 
-export function getErrorStrOnException(e: unknown) {
+export function getErrorStrOnException(e: unknown): string {
     let error: string;
 
-    if (e instanceof Error) error = e.message;
+    if (e instanceof Error) error = e.message || 'Unknown error';
     else if (typeof e === 'string') error = e;
-    else error = JSON.stringify(e);
+    else {
+        const jsonStr = JSON.stringify(e);
+        error = jsonStr ?? String(e);
+    }
     return error;
 }
 
