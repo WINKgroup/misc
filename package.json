@@ -13,7 +13,7 @@
     "prepare": "npm run clean && tsc",
     "preversion": "npm run format",
     "postversion": "git push && git push --tags && npm publish",
-    "test": "npx ts-node-dev --respawn src/test.ts"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,13 @@
   },
   "homepage": "https://github.com/WINKgroup/misc-wink#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.11.30",
     "prettier": "^3.2.5",
     "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0"
   }
 }

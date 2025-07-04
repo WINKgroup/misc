@@ -242,25 +242,29 @@ export function permute<T>(inputArray: T[]): T[][] {
 }
 
 export function objectRegExpToString(obj: any): string {
-    if (obj === null || obj === undefined) {
-        return JSON.stringify(obj);
-    }
-
-    if (obj instanceof RegExp) {
-        return obj.toString();
-    }
-
-    if (typeof obj === 'object') {
-        const newObj: any = Array.isArray(obj) ? [] : {};
-        for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                newObj[key] = objectRegExpToString(obj[key]);
-            }
+    function processObject(obj: any): any {
+        if (obj === null || obj === undefined) {
+            return obj;
         }
-        return JSON.stringify(newObj);
+
+        if (obj instanceof RegExp) {
+            return obj.toString();
+        }
+
+        if (typeof obj === 'object') {
+            const newObj: any = Array.isArray(obj) ? [] : {};
+            for (const key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    newObj[key] = processObject(obj[key]);
+                }
+            }
+            return newObj;
+        }
+
+        return obj;
     }
 
-    return JSON.stringify(obj);
+    return JSON.stringify(processObject(obj));
 }
 
 export function stringToObjectRegExp(str: string): any {
