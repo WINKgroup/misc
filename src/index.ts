@@ -302,18 +302,21 @@ export function stringToObjectRegExp(str: string): any {
 }
 
 export function canonicalize(value: any): any {
-  if (Array.isArray(value)) {
-    return value.map(canonicalize);
-  }
+    if (Array.isArray(value)) {
+        return value.map(canonicalize);
+    }
 
-  if (value !== null && typeof value === 'object') {
-    return Object.keys(value)
-      .sort()
-      .reduce((acc, key) => {
-        acc[key] = canonicalize(value[key]);
-        return acc;
-      }, {} as Record<string, any>);
-  }
+    if (value !== null && typeof value === 'object') {
+        return Object.keys(value)
+            .sort()
+            .reduce(
+                (acc, key) => {
+                    acc[key] = canonicalize(value[key]);
+                    return acc;
+                },
+                {} as Record<string, any>,
+            );
+    }
 
-  return value;
+    return value;
 }
