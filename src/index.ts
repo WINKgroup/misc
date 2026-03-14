@@ -307,6 +307,14 @@ export function canonicalize(value: any): any {
     }
 
     if (value !== null && typeof value === 'object') {
+        if (value instanceof RegExp) {
+            return value;
+        }
+
+        if (Object.getPrototypeOf(value) !== Object.prototype) {
+            return value;
+        }
+
         return Object.keys(value)
             .sort()
             .reduce(
